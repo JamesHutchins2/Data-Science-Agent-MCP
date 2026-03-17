@@ -1,0 +1,13 @@
+services:
+  api:
+    build: ./api
+    container_name: adces_mvp_api
+    ports:
+      - "8001:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4o}
+      - MAX_RETRIES=${MAX_RETRIES:-3}
+    volumes:
+      - ./data:/data
+      - ./skills:/skills:ro
